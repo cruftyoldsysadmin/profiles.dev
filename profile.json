@@ -114,11 +114,7 @@
       "level": "beginner"
     }
   ],
-  "citizenships": [
-    {
-      "name": "USA"
-    }
-  ],
+  "citizenships": ["USA"],
   "timezone": "UTC+3",
   "certifications": [
     {
