@@ -12,3 +12,7 @@ jobs:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v3
     - uses: pre-commit/action@v3.0.0
+    - name: Install jsonlint
+      run: npm install -g jsonlint
+    - name: Run jsonlint
+      run: jsonlint profile.json
