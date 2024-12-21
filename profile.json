@@ -2,15 +2,20 @@
   "email": "no-reply@profiles.dev",
   "blog": "https://nomadops.github.io/blog/",
   "github": "cruftyoldsysadmin",
-  "gpg_keys": "https://keybase.io/cruftyoldsysadmin/pgp_keys.asc" ,
-  "keybase":  "https://keybase.io/cruftyoldsysadmin" ,
-  "linkedin":  "https://linkedin.com/in/cruftyoldsysadmin",
-  "slack":  "https://nomadopsllc.slack.com/",
-  "terraform_registy": "https://registry.terraform.io/users/nomadops",
+  "gpgKeys": "https://keybase.io/cruftyoldsysadmin/pgp_keys.asc",
+  "keybase": "https://keybase.io/cruftyoldsysadmin",
+  "linkedin": "https://linkedin.com/in/cruftyoldsysadmin",
+  "slack": "https://nomadopsllc.slack.com/",
+  "terraformRegistry": "https://registry.terraform.io/users/nomadops",
   "twitter": "nomadopsllc",
-  "websites": [ { "url": "https://nomadops.io", "description": "nomadops.io" } ],
+  "websites": [
+    {
+      "url": "https://nomadops.io",
+      "description": "nomadops.io"
+    }
+  ],
   "youtube": "https://youtube.com/nomadops",
-  "github_repositories": [
+  "githubRepositories": [
     {
       "owner": "cruftyoldsysadmin",
       "name": "awesome-learning-resources",
@@ -23,49 +28,112 @@
     }
   ],
   "headline": "Senior DevOps pipeline and Infrastructure as Code (IAC) consulting",
-  "industries": [ "startups", "cloud" ],
-  "job_title": "Infrastructure as Code Consultant",
+  "industries": [
+    {
+      "name": "startups"
+    },
+    {
+      "name": "cloud"
+    }
+  ],
+  "jobTitle": "Infrastructure as Code Consultant",
   "title": "IAC consultant.",
   "keywords": [
-    "Terraform",
-    "terragrunt",
-    "IAC",
-    "linux",
-    "docker",
-    "kubernetes",
-    "aws",
-    "devops",
-    "cicd",
-    "github actions",
-    "golang"
+    {
+      "name": "Terraform"
+    },
+    {
+      "name": "terragrunt"
+    },
+    {
+      "name": "IAC"
+    },
+    {
+      "name": "linux"
+    },
+    {
+      "name": "docker"
+    },
+    {
+      "name": "kubernetes"
+    },
+    {
+      "name": "aws"
+    },
+    {
+      "name": "devops"
+    },
+    {
+      "name": "cicd"
+    },
+    {
+      "name": "github actions"
+    },
+    {
+      "name": "golang"
+    }
   ],
-  "long_summary": "I have been working with production infrastructure for about 25 years. My primary interests are implementing DevOps pipelines with Infrastructure as Code. I love working with AWS Terraform/Terragrunt, Kubernetes and Golang.",
+  "longSummary": "I have been working with production infrastructure for about 25 years. My primary interests are implementing DevOps pipelines with Infrastructure as Code. I love working with AWS Terraform/Terragrunt, Kubernetes and Golang.",
   "name": "Cruftyold Sysadmin",
-  "profile_image": "https://avatars.githubusercontent.com/u/20204452?v=4",
-  "short_summary": "Infrastructure as code consulting",
+  "profileImage": "https://avatars.githubusercontent.com/u/20204452?v=4",
+  "shortSummary": "Infrastructure as code consulting",
   "languages": [
-    { "name": "English", "level": "native" }
+    {
+      "name": "English",
+      "level": "native"
+    }
   ],
-  "skills": {
-    "bash": "expert",
-    "drumming": "mid-level",
-    "golang": "intermediate" ,
-    "python": "beginner" ,
-    "Terraform": "expert" ,
-    "Github Actions": "expert",
-    "Kubernetes": "senior",
-    "CICD": "intermediate",
-    "Pulumi": "beginner"
-  },
-  "citizenships": ["USA"],
+  "skills": [
+    {
+      "name": "bash",
+      "level": "expert"
+    },
+    {
+      "name": "drumming",
+      "level": "mid-level"
+    },
+    {
+      "name": "golang",
+      "level": "intermediate"
+    },
+    {
+      "name": "python",
+      "level": "beginner"
+    },
+    {
+      "name": "Terraform",
+      "level": "expert"
+    },
+    {
+      "name": "Github Actions",
+      "level": "expert"
+    },
+    {
+      "name": "Kubernetes",
+      "level": "senior"
+    },
+    {
+      "name": "CICD",
+      "level": "intermediate"
+    },
+    {
+      "name": "Pulumi",
+      "level": "beginner"
+    }
+  ],
+  "citizenships": [
+    {
+      "name": "USA"
+    }
+  ],
   "timezone": "UTC+3",
   "certifications": [
     {
       "name": "AWS Certified Cloud Practitioner",
-      "start_date": "2023-03-20",
-      "end_date": "2026-03-20",
+      "startDate": "2023-03-20",
+      "endDate": "2026-03-20",
       "url": "https://www.credly.com/badges/02f8cc96-da8d-4d61-9250-f564d6a662a8/public_url"
     }
   ],
-  "mailing_list": false
+  "mailingList": false
 }
