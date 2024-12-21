@@ -32,39 +32,17 @@
   "jobTitle": "Infrastructure as Code Consultant",
   "title": "IAC consultant.",
   "keywords": [
-    {
-      "name": "Terraform"
-    },
-    {
-      "name": "terragrunt"
-    },
-    {
-      "name": "IAC"
-    },
-    {
-      "name": "linux"
-    },
-    {
-      "name": "docker"
-    },
-    {
-      "name": "kubernetes"
-    },
-    {
-      "name": "aws"
-    },
-    {
-      "name": "devops"
-    },
-    {
-      "name": "cicd"
-    },
-    {
-      "name": "github actions"
-    },
-    {
-      "name": "golang"
-    }
+    "Terraform",
+    "terragrunt",
+    "IAC",
+    "linux",
+    "docker",
+    "kubernetes",
+    "aws",
+    "devops",
+    "cicd",
+    "github actions",
+    "golang"
   ],
   "longSummary": "I have been working with production infrastructure for about 25 years. My primary interests are implementing DevOps pipelines with Infrastructure as Code. I love working with AWS Terraform/Terragrunt, Kubernetes and Golang.",
   "name": "Cruftyold Sysadmin",
