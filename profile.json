@@ -28,14 +28,7 @@
     }
   ],
   "headline": "Senior DevOps pipeline and Infrastructure as Code (IAC) consulting",
-  "industries": [
-    {
-      "name": "startups"
-    },
-    {
-      "name": "cloud"
-    }
-  ],
+  "industries": [ "startups", "cloud"],
   "jobTitle": "Infrastructure as Code Consultant",
   "title": "IAC consultant.",
   "keywords": [
