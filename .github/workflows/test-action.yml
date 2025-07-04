@@ -41,7 +41,7 @@ jobs:
       - name: Test action (dry run)
         uses: ./
         with:
-          api-endpoint: 'https://httpbin.org/post'
+          # api-endpoint: 'https://httpbin.org/post'  # Uncomment for mock testing
           profile-path: 'profile.yaml'
           debug: 'true'
         continue-on-error: true

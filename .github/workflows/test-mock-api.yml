@@ -1,0 +1,26 @@
+name: Test with Mock API
+
+on:
+  workflow_dispatch:
+    inputs:
+      profile_path:
+        description: 'Path to profile.yaml'
+        required: false
+        default: 'profile.yaml'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  test-mock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Test with httpbin (mock)
+        uses: ./
+        with:
+          api-endpoint: 'https://httpbin.org/post'
+          profile-path: ${{ github.event.inputs.profile_path }}
+          debug: true
