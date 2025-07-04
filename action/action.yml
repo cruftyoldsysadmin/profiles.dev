@@ -8,7 +8,7 @@ inputs:
   api-endpoint:
     description: 'API endpoint for profiles.dev webhook'
     required: false
-    default: 'https://api.profiles.dev/webhook'
+    default: 'https://api.profiles.dev/api/webhook'
   profile-path:
     description: 'Path to profile.yaml file'
     required: false

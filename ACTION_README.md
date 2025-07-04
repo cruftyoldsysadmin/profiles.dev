@@ -93,7 +93,7 @@ That's it! Your profile will automatically update whenever you push changes to `
 
 | Input | Description | Required | Default |
 |-------|-------------|----------|---------|
-| `api-endpoint` | API endpoint for profiles.dev webhook | No | `https://api.profiles.dev/webhook` |
+| `api-endpoint` | API endpoint for profiles.dev webhook | No | `https://api.profiles.dev/api/webhook` |
 | `profile-path` | Path to profile.yaml file | No | `profile.yaml` |
 | `debug` | Enable debug logging | No | `false` |
 
@@ -256,7 +256,7 @@ Enable debug logging for detailed information:
 
 The action supports two API endpoints:
 
-1. **Production (Default)**: `https://api.profiles.dev/webhook`
+1. **Production (Default)**: `https://api.profiles.dev/api/webhook`
    - Used automatically when no `api-endpoint` is specified
    - Requires valid OIDC token from GitHub
    - Creates/updates real profiles
