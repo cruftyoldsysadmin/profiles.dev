@@ -1,0 +1,29 @@
+name: 'Update profiles.dev'
+description: 'Updates your profile on profiles.dev by reading profile.yaml and calling the webhook API'
+author: 'NomadOps'
+branding:
+  icon: 'user-check'
+  color: 'blue'
+inputs:
+  api-endpoint:
+    description: 'API endpoint for profiles.dev webhook'
+    required: false
+    default: 'https://api.profiles.dev/webhook'
+  profile-path:
+    description: 'Path to profile.yaml file'
+    required: false
+    default: 'profile.yaml'
+  debug:
+    description: 'Enable debug logging'
+    required: false
+    default: 'false'
+outputs:
+  profile-id:
+    description: 'The ID of the updated profile'
+  status:
+    description: 'Status of the update operation'
+  message:
+    description: 'Detailed message about the operation'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

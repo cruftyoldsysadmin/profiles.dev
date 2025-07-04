@@ -1,0 +1,41 @@
+name: Test User
+bio: Test bio for GitHub Action testing
+location: Test City, TC
+email: test@example.com
+website: https://example.com
+twitter: "@testuser"
+github: testuser
+linkedin: https://linkedin.com/in/testuser
+
+skills:
+  - JavaScript
+  - TypeScript
+  - Testing
+
+languages:
+  - English
+  - Spanish
+
+projects:
+  - name: Test Project
+    description: A test project for validation
+    url: https://github.com/testuser/test-project
+    role: Maintainer
+
+experience:
+  - company: Test Company
+    position: Test Engineer
+    duration: 2023 - Present
+    description: Testing GitHub Actions
+
+education:
+  - institution: Test University
+    degree: B.S. Computer Science
+    field: Software Engineering
+    year: 2022
+
+certifications:
+  - name: GitHub Actions Certified
+    issuer: GitHub
+    year: 2024
+    url: https://github.com/certifications/test
