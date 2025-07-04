@@ -1,0 +1,68 @@
+# Welcome to profiles.dev! 
+# This is your profile template. Customize it to showcase who you are.
+# All fields are optional - share only what you're comfortable with.
+
+name: Your Name
+bio: A brief description about yourself
+location: City, Country
+email: your.email@example.com
+website: https://yourwebsite.com
+
+# Social Links (handle or full URL)
+twitter: "@yourhandle"
+github: yourusername
+linkedin: https://linkedin.com/in/yourprofile
+
+# Professional Skills
+skills:
+  - JavaScript
+  - Python
+  - Docker
+  # Add more skills
+
+languages:
+  - English
+  - Spanish
+  # Add more languages
+
+# Projects You're Proud Of
+projects:
+  - name: Amazing Project
+    description: Brief description of what it does
+    url: https://github.com/yourusername/project
+    role: Creator
+
+  # Add more projects
+
+# Work Experience
+experience:
+  - company: Current Company
+    position: Your Title
+    duration: 2022 - Present
+    description: What you do there
+
+  # Add more experiences
+
+# Education
+education:
+  - institution: University Name
+    degree: Your Degree
+    field: Field of Study
+    year: 2020
+
+  # Add more education
+
+# Certifications
+certifications:
+  - name: Certification Name
+    issuer: Issuing Organization
+    year: 2023
+    url: https://verification-link.com
+
+  # Add more certifications
+
+# Feel free to add custom fields!
+# interests:
+#   - Open Source
+#   - Machine Learning
+#   - Photography

@@ -1,9 +1,16 @@
-node_modules/
-dist/
-*.log
+# Action build files
+action/node_modules/
+action/dist/
+action/*.log
+
+# User customizations to ignore
 .env
 .DS_Store
-coverage/
+
+# IDE
 .vscode/
 .idea/
+
+# Coverage
+coverage/
 *.tgz

@@ -3,8 +3,13 @@ name: Test Action
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'action/**'
+      - '.github/workflows/test-action.yml'
   pull_request:
     branches: [ main ]
+    paths:
+      - 'action/**'
 
 jobs:
   test:
@@ -18,18 +23,24 @@ jobs:
           node-version: '20'
           
       - name: Install dependencies
-        run: npm ci
+        run: |
+          cd action
+          npm ci
         
       - name: Run tests
-        run: npm test
+        run: |
+          cd action
+          npm test
         
       - name: Build action
-        run: npm run build
+        run: |
+          cd action
+          npm run build
         
       - name: Test action (dry run)
         uses: ./
         with:
-          api-endpoint: 'https://httpbin.org/post' # Mock endpoint for testing
-          profile-path: 'test/fixtures/profile.yaml'
+          api-endpoint: 'https://httpbin.org/post'
+          profile-path: 'profile.yaml'
           debug: 'true'
         continue-on-error: true

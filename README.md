@@ -1,59 +1,25 @@
-# profiles.dev GitHub Action
+# profiles.dev
 
-[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-profiles.dev-blue?logo=github)](https://github.com/marketplace/actions/update-profiles-dev)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge)](https://github.com/nomadops/profiles.dev/generate)
+[![GitHub Action](https://img.shields.io/badge/GitHub%20Action-profiles.dev-blue?style=for-the-badge&logo=github-actions)](https://github.com/marketplace/actions/update-profiles-dev)
 
-Automatically update your [profiles.dev](https://profiles.dev) profile when you push changes to your repository.
+Your developer profile, powered by GitHub. This repository serves two purposes:
 
-## Features
+1. **🎯 Template Repository**: Fork or use as template to create your profile
+2. **⚙️ GitHub Action**: Automatically updates your profile on profiles.dev
 
-- 🚀 Automatic profile updates on push
-- 🔐 Secure authentication using GitHub OIDC tokens
-- ✅ Profile validation before submission
-- 📊 Clear success/failure reporting in Actions logs
-- 🎯 Zero configuration required (works with defaults)
-- 🛡️ Type-safe with full TypeScript support
+## 🚀 Quick Start (30 seconds)
 
-## Quick Start
+### Option 1: Use This Template (Recommended)
 
-1. Create a `profile.yaml` file in your repository root:
+1. Click the "Use this template" button above
+2. Name your repo (e.g., `my-profile` or anything you like)
+3. Edit `profile.yaml` with your information
+4. Commit and push - your profile auto-updates!
 
-```yaml
-name: Jane Developer
-bio: Full-stack developer passionate about open source
-location: San Francisco, CA
-email: jane@example.com
-website: https://jane.dev
-twitter: "@janedev"
-github: janedev
-linkedin: https://linkedin.com/in/janedev
+### Option 2: Add to Existing Repository
 
-skills:
-  - TypeScript
-  - React
-  - Node.js
-  - Python
-  - PostgreSQL
-
-projects:
-  - name: Awesome Project
-    description: A revolutionary app that changes everything
-    url: https://github.com/janedev/awesome-project
-    role: Creator & Maintainer
-
-experience:
-  - company: Tech Corp
-    position: Senior Software Engineer
-    duration: 2020 - Present
-    description: Leading development of cloud-native applications
-
-education:
-  - institution: University of Technology
-    degree: B.S. Computer Science
-    year: 2019
-```
-
-2. Create `.github/workflows/update-profile.yml`:
+Add this workflow to `.github/workflows/update-profile.yml`:
 
 ```yaml
 name: Update profiles.dev
@@ -63,7 +29,6 @@ on:
     branches: [ main ]
     paths:
       - 'profile.yaml'
-  workflow_dispatch:
 
 permissions:
   id-token: write
@@ -74,231 +39,159 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Update profiles.dev
-        uses: nomadops/profiles.dev@v1
-        with:
-          debug: true # Optional: Enable debug logging
+      - uses: nomadops/profiles.dev@v1
 ```
 
-That's it! Your profile will automatically update whenever you push changes to `profile.yaml`.
+Then create your `profile.yaml` and push!
 
-## Configuration
+## 📝 Profile Configuration
 
-### Inputs
+Edit `profile.yaml` to customize your profile. All fields are optional:
 
-| Input | Description | Required | Default |
-|-------|-------------|----------|---------|
-| `api-endpoint` | API endpoint for profiles.dev webhook | No | `https://api.profiles.dev/webhook` |
-| `profile-path` | Path to profile.yaml file | No | `profile.yaml` |
-| `debug` | Enable debug logging | No | `false` |
+```yaml
+name: Jane Developer
+bio: Full-stack developer passionate about open source
+location: San Francisco, CA
+email: jane@example.com
+website: https://jane.dev
 
-### Outputs
+# Social links
+twitter: "@janedev"
+github: janedev
+linkedin: https://linkedin.com/in/janedev
 
-| Output | Description |
-|--------|-------------|
-| `profile-id` | The ID of the updated profile |
-| `status` | Status of the update operation (`success` or `failed`) |
-| `message` | Detailed message about the operation |
+# Professional info
+skills:
+  - TypeScript
+  - React
+  - Node.js
 
-## Profile Schema
+projects:
+  - name: Cool Project
+    description: An amazing project
+    url: https://github.com/janedev/cool-project
+```
 
-The `profile.yaml` file supports the following fields:
+See the [full profile schema](#profile-schema) below for all available fields.
 
-### Required Fields
-- None! All fields are optional, allowing you to share only what you want.
+## 🎨 Your Profile URL
 
-### Optional Fields
+Once set up, your profile will be available at:
 
-#### Basic Information
+```
+https://profiles.dev/YOUR_GITHUB_USERNAME
+```
+
+## 📋 Profile Schema
+
+<details>
+<summary>Click to see all available fields</summary>
+
+### Basic Information
 - `name` - Your display name
-- `bio` - A brief description about yourself
-- `company` - Current company or organization
+- `bio` - Brief description about yourself
+- `company` - Current company/organization
 - `location` - Your location
 - `email` - Contact email
-- `website` - Personal website URL
+- `website` - Personal website
 
-#### Social Links
-- `twitter` - Twitter/X handle (with or without @)
+### Social Links
+- `twitter` - Twitter/X handle or URL
 - `github` - GitHub username
 - `linkedin` - LinkedIn profile URL
 
-#### Professional Information
-- `skills` - Array of skills/technologies
-- `languages` - Array of programming languages
+### Professional
+- `skills` - Array of skills
+- `languages` - Array of languages
 
-#### Projects
+### Projects
 Array of projects with:
-- `name` (required) - Project name
-- `description` - Project description
-- `url` - Project URL
-- `role` - Your role in the project
+- `name` (required)
+- `description`
+- `url`
+- `role`
 
-#### Experience
+### Experience
 Array of work experiences with:
-- `company` (required) - Company name
-- `position` (required) - Job title
-- `duration` - Time period
-- `description` - Role description
+- `company` (required)
+- `position` (required)
+- `duration`
+- `description`
 
-#### Education
-Array of educational qualifications with:
-- `institution` (required) - School/University name
-- `degree` - Degree obtained
-- `field` - Field of study
-- `year` - Graduation year
+### Education
+Array of education with:
+- `institution` (required)
+- `degree`
+- `field`
+- `year`
 
-#### Certifications
+### Certifications
 Array of certifications with:
-- `name` (required) - Certification name
-- `issuer` - Issuing organization
-- `year` - Year obtained
-- `url` - Verification URL
+- `name` (required)
+- `issuer`
+- `year`
+- `url`
 
-## Advanced Usage
+</details>
 
-### Manual Trigger
+## 🛠️ Advanced Usage
 
-Add a workflow dispatch trigger to update your profile on demand:
+### Manual Updates
 
-```yaml
-on:
-  push:
-    branches: [ main ]
-    paths:
-      - 'profile.yaml'
-  workflow_dispatch:
-    inputs:
-      debug:
-        description: 'Enable debug mode'
-        required: false
-        default: 'false'
-        type: boolean
-```
+Trigger a manual update anytime:
 
-### Custom Profile Path
+1. Go to Actions tab
+2. Select "Update profiles.dev"
+3. Click "Run workflow"
 
-If your profile file is in a different location:
+### Custom Configuration
 
 ```yaml
-- name: Update profiles.dev
-  uses: nomadops/profiles.dev@v1
+- uses: nomadops/profiles.dev@v1
   with:
-    profile-path: '.github/my-profile.yaml'
+    profile-path: 'custom/path/to/profile.yaml'
+    debug: true
 ```
 
-### Conditional Updates
-
-Only update on specific conditions:
-
-```yaml
-- name: Update profiles.dev
-  if: contains(github.event.head_commit.message, '[update profile]')
-  uses: nomadops/profiles.dev@v1
-```
-
-### Matrix Builds
-
-Update multiple profiles from a single repository:
+### Multiple Profiles
 
 ```yaml
 strategy:
   matrix:
-    profile:
-      - path: profiles/personal.yaml
-        name: personal
-      - path: profiles/professional.yaml
-        name: professional
-
+    profile: [personal.yaml, professional.yaml]
 steps:
   - uses: actions/checkout@v4
-  
-  - name: Update ${{ matrix.profile.name }} profile
-    uses: nomadops/profiles.dev@v1
+  - uses: nomadops/profiles.dev@v1
     with:
-      profile-path: ${{ matrix.profile.path }}
+      profile-path: ${{ matrix.profile }}
 ```
 
-## Troubleshooting
+## 🔧 For Action Developers
 
-### Common Issues
+This repository also contains the GitHub Action source code. See [ACTION_README.md](ACTION_README.md) for development details.
 
-1. **"Profile file not found"**
-   - Ensure `profile.yaml` exists in your repository root
-   - Check the file name spelling (it's `profile.yaml`, not `profile.yml`)
-   - If using a custom path, verify it's correct
+## 🤝 Contributing
 
-2. **"Authentication failed"**
-   - Ensure your workflow has `id-token: write` permission
-   - Verify your repository is public or has proper access
+We welcome contributions! Whether it's:
+- 🐛 Bug fixes
+- ✨ New features
+- 📚 Documentation improvements
+- 💡 Ideas and suggestions
 
-3. **"Validation failed"**
-   - Check the error messages in the Actions log
-   - Ensure all URLs are valid
-   - Verify email format is correct
+Please open an issue or submit a PR.
 
-### Debug Mode
+## 📜 License
 
-Enable debug logging for detailed information:
-
-```yaml
-- name: Update profiles.dev
-  uses: nomadops/profiles.dev@v1
-  with:
-    debug: true
-```
-
-## Security
-
-This action uses GitHub's OIDC token feature for secure authentication. No API keys or secrets are required. The token is automatically generated by GitHub and can only be used by authorized repositories.
-
-### Required Permissions
-
-```yaml
-permissions:
-  id-token: write    # Required for OIDC token
-  contents: read     # Required to read profile.yaml
-```
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## Development
-
-```bash
-# Install dependencies
-npm install
-
-# Run tests
-npm test
-
-# Build the action
-npm run build
-
-# Run linting
-npm run lint
-
-# Format code
-npm run format
-```
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Support
-
-- 📧 Email: support@profiles.dev
-- 🐛 Issues: [GitHub Issues](https://github.com/nomadops/profiles.dev/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/nomadops/profiles.dev/discussions)
+MIT © NomadOps
 
 ---
 
-Made with ❤️ by [NomadOps](https://github.com/nomadops)
+<p align="center">
+  Made with ❤️ by the <a href="https://github.com/nomadops">NomadOps</a> team
+</p>
+
+<p align="center">
+  <a href="https://profiles.dev">profiles.dev</a> •
+  <a href="https://github.com/nomadops/profiles.dev/issues">Issues</a> •
+  <a href="https://github.com/marketplace/actions/update-profiles-dev">Marketplace</a>
+</p>
