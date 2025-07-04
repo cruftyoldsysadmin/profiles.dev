@@ -19,5 +19,6 @@ jobs:
       
       - name: Update profiles.dev
         uses: ./  # Will use nomadops/profiles.dev@v1 after testing
-        # with:
-        #   debug: true  # Uncomment for debugging
+        with:
+          api-endpoint: 'https://httpbin.org/post'  # Mock endpoint for testing
+          debug: true
