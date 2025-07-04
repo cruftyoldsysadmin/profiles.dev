@@ -1,69 +1,68 @@
-# Welcome to profiles.dev! 
-# This is your profile template. Customize it to showcase who you are.
-# All fields are optional - share only what you're comfortable with.
+# Test profile for cruftyoldsysadmin
+name: Crufty Old Sysadmin
+bio: Battle-hardened systems administrator who remembers when disks were actually floppy
+location: The Server Room
+email: crufty@oldsysadmin.com
+website: https://cruftyoldsysadmin.com
 
-name: Test User
-bio: A brief description about yourself
-location: City, Country
-email: your.email@example.com
-website: https://yourwebsite.com
-
-# Social Links (handle or full URL)
-twitter: "@yourhandle"
-github: yourusername
-linkedin: https://linkedin.com/in/yourprofile
+# Social Links
+twitter: "@cruftyops"
+github: cruftyoldsysadmin
+linkedin: https://linkedin.com/in/cruftyoldsysadmin
 
 # Professional Skills
 skills:
-  - JavaScript
-  - Python
-  - Docker
-  # Add more skills
+  - Bash Scripting
+  - Linux Administration
+  - Kubernetes
+  - Terraform
+  - Ansible
+  - "Turning it off and on again"
 
 languages:
-  - English
-  - Spanish
-  # Add more languages
+  - Bash
+  - Python
+  - Go
+  - YAML (unfortunately)
 
-# Projects You're Proud Of
+# Projects
 projects:
-  - name: Amazing Project
-    description: Brief description of what it does
-    url: https://github.com/yourusername/project
+  - name: Legacy System Modernizer
+    description: Tools to bring 20-year-old systems into the modern era
+    url: https://github.com/cruftyoldsysadmin/legacy-modernizer
     role: Creator
 
-  # Add more projects
+  - name: Config Management Nightmares
+    description: A collection of horror stories and their solutions
+    url: https://github.com/cruftyoldsysadmin/config-nightmares
+    role: Maintainer
 
-# Work Experience
+# Experience
 experience:
-  - company: Current Company
-    position: Your Title
-    duration: 2022 - Present
-    description: What you do there
+  - company: Current Startup
+    position: Principal SRE
+    duration: 2020 - Present
+    description: Keeping the lights on while developers deploy on Fridays
 
-  # Add more experiences
+  - company: BigCorp Inc
+    position: Senior Systems Administrator
+    duration: 2010 - 2020
+    description: Managed infrastructure before "DevOps" was cool
 
 # Education
 education:
-  - institution: University Name
-    degree: Your Degree
-    field: Field of Study
-    year: 2020
-
-  # Add more education
+  - institution: School of Hard Knocks
+    degree: Masters in Debugging
+    field: Production Incidents
+    year: Ongoing
 
 # Certifications
 certifications:
-  - name: Certification Name
-    issuer: Issuing Organization
-    year: 2023
-    url: https://verification-link.com
+  - name: Certified Kubernetes Administrator
+    issuer: CNCF
+    year: 2021
+    url: https://cncf.io/certification/cka/
 
-  # Add more certifications
-
-# Feel free to add custom fields!
-# interests:
-#   - Open Source
-#   - Machine Learning
-#   - Photography
-# Test update
+  - name: AWS Solutions Architect
+    issuer: Amazon
+    year: 2020
