@@ -2,7 +2,7 @@
 username: cruftyoldsysadmin
 name: Crufty Old Sysadmin
 tagline: "I've seen things you people wouldn't believe. Attack ships on fire off the shoulder of Orion."
-bio: Battle-hardened systems administrator who remembers when disks were actually floppy and servers had physical reset buttons
+bio: Battle-hardened systems administrator who remembers when disks were actually floppy and servers had physical reset buttons. Now updating profiles via API v2!
 location: "The Server Room (Temperature: Always Too Cold)"
 available_for:
   - consulting
