@@ -38,18 +38,10 @@ export interface ProfileData {
 }
 
 export interface WebhookPayload {
-  profile: ProfileData;
-  repository: {
-    owner: string;
-    name: string;
-    url: string;
-  };
-  commit: {
-    sha: string;
-    message: string;
-    author: string;
-  };
-  timestamp: string;
+  profile_content: string;  // base64 encoded YAML
+  repository: string;       // owner/repo format
+  ref: string;             // git ref
+  commit_sha: string;      // commit SHA
 }
 
 export interface WebhookResponse {

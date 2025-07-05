@@ -34650,20 +34650,14 @@ async function run() {
         if (debug) {
             core.debug('OIDC token obtained successfully');
         }
-        // Prepare webhook payload
+        // Prepare webhook payload matching API expectations
+        const profileYaml = fs.readFileSync(path.resolve(process.cwd(), profilePath), 'utf8');
+        const profileContentBase64 = Buffer.from(profileYaml).toString('base64');
         const payload = {
-            profile: profileData,
-            repository: {
-                owner,
-                name: repo,
-                url: `https://github.com/${owner}/${repo}`
-            },
-            commit: {
-                sha: context.sha,
-                message: context.payload.head_commit?.message || 'Update profile',
-                author: context.actor
-            },
-            timestamp: new Date().toISOString()
+            profile_content: profileContentBase64,
+            repository: `${owner}/${repo}`,
+            ref: context.ref,
+            commit_sha: context.sha
         };
         if (debug) {
             core.debug(`Webhook payload: ${JSON.stringify(payload, null, 2)}`);
