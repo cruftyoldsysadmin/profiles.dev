@@ -56,6 +56,24 @@ async function run(): Promise<void> {
     
     core.info(`🚀 Starting profiles.dev update for ${owner}/${repo}`);
 
+    // Validate repository name (API requirement)
+    if (repo !== 'profiles.dev') {
+      core.setFailed(`Repository name must be "profiles.dev" but found "${repo}". Please rename your repository to "${owner}/profiles.dev".`);
+      return;
+    }
+
+    // Validate event type (API requirement)
+    if (context.eventName !== 'push') {
+      core.setFailed(`Only push events are supported. Found event type: ${context.eventName}`);
+      return;
+    }
+
+    // Validate actor matches repository owner (API requirement)
+    if (context.actor.toLowerCase() !== owner.toLowerCase()) {
+      core.setFailed(`Push events must come from the repository owner. Actor: ${context.actor}, Owner: ${owner}`);
+      return;
+    }
+
     // Read and parse profile.yaml
     core.info(`📖 Reading profile from ${profilePath}`);
     const profileData = await readProfileFile(profilePath);
@@ -158,7 +176,21 @@ async function run(): Promise<void> {
         if (status === 401) {
           core.setFailed('Authentication failed. Please ensure the repository has proper permissions.');
         } else if (status === 400) {
-          core.setFailed(`Invalid request: ${data?.message || error.message}`);
+          const message = data?.message || error.message;
+          
+          // Provide specific guidance for common validation errors
+          if (message.includes('repository validation failed')) {
+            core.setFailed(`Repository name must be exactly "${owner}/profiles.dev". Please rename your repository.`);
+          } else if (message.includes('actor mismatch')) {
+            core.setFailed(`Push must come from repository owner. Current actor: ${context.actor}, Expected: ${owner}`);
+          } else if (message.includes('only push events')) {
+            core.setFailed(`Only push events to the default branch are supported. Current event: ${context.eventName}`);
+          } else if (message.includes('default branch')) {
+            core.setFailed(`Only updates to the default branch are allowed. Please push to your default branch.`);
+          } else {
+            core.setFailed(`Invalid request: ${message}`);
+          }
+          
           if (data?.errors) {
             data.errors.forEach(err => core.error(err));
           }

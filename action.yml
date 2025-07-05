@@ -1,5 +1,5 @@
 name: 'Update profiles.dev'
-description: 'Updates your profile on profiles.dev by reading profile.yaml and calling the webhook API'
+description: 'Self-service profile updates for profiles.dev. Requires repository to be named "profiles.dev" and updates via push events only.'
 author: 'NomadOps'
 branding:
   icon: 'user-check'

@@ -5,7 +5,8 @@ on:
     branches: [ main ]
     paths:
       - 'profile.yaml'
-  workflow_dispatch:
+  # NOTE: workflow_dispatch is NOT supported by the API
+  # Only push events to the default branch are allowed
 
 permissions:
   id-token: write
@@ -18,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Update profiles.dev
-        uses: ./  # Will use nomadops/profiles.dev@v1 after testing
+        uses: ./  # Will use nomadops/profiles.dev@v2 after testing
         # with:
         #   api-endpoint: 'https://httpbin.org/post'  # Uncomment only for mock testing
         #   debug: true
