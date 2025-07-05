@@ -5,7 +5,8 @@ on:
     branches: [ main ]
     paths:
       - 'profile.yaml'
-  workflow_dispatch:
+  # NOTE: workflow_dispatch is NOT supported by the API
+  # Only push events to the default branch are allowed
 
 permissions:
   id-token: write
@@ -19,6 +20,5 @@ jobs:
       
       - name: Update profiles.dev
         uses: nomadops/profiles.dev@main
-        with:
-          api-endpoint: 'https://3o4quj9fq4.execute-api.eu-west-1.amazonaws.com/Prod/api/webhook'
-          debug: true
+        # Note: api-endpoint defaults to https://api.profiles.dev/api/webhook
+        # No need to override unless testing

@@ -3,32 +3,37 @@
 [![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge)](https://github.com/nomadops/profiles.dev/generate)
 [![GitHub Action](https://img.shields.io/badge/GitHub%20Action-profiles.dev-blue?style=for-the-badge&logo=github-actions)](https://github.com/marketplace/actions/update-profiles-dev)
 
-Your developer profile, powered by GitHub. This repository serves two purposes:
+Your self-managed developer profile, powered by GitHub. Create and maintain your own profile on profiles.dev!
 
-1. **🎯 Template Repository**: Fork or use as template to create your profile
-2. **⚙️ GitHub Action**: Automatically updates your profile on profiles.dev
+> **Existing users**: See the [Migration Guide](MIGRATION.md) for updating to v2.
 
 ## 🚀 Quick Start (30 seconds)
+
+### ⚠️ Important: Repository Naming Requirement
+
+**Your repository MUST be named `profiles.dev`** to work with the profiles.dev service. This is a security requirement to ensure you control your own profile.
 
 ### Option 1: Use This Template (Recommended)
 
 1. Click the "Use this template" button above
-2. Name your repo (e.g., `my-profile` or anything you like)
+2. **Name your repo exactly `profiles.dev`** (required!)
 3. Edit `profile.yaml` with your information
 4. Commit and push - your profile auto-updates!
 
-### Option 2: Add to Existing Repository
+### Option 2: Manual Setup
 
-Add this workflow to `.github/workflows/update-profile.yml`:
+1. Create a new repository named `profiles.dev` in your GitHub account
+2. Add this workflow to `.github/workflows/update-profile.yml`:
 
 ```yaml
 name: Update profiles.dev
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main ]  # or 'master' if that's your default
     paths:
       - 'profile.yaml'
+  # NOTE: workflow_dispatch is NOT supported
 
 permissions:
   id-token: write
@@ -39,10 +44,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: nomadops/profiles.dev@v1
+      - uses: nomadops/profiles.dev@v2
 ```
 
-Then create your `profile.yaml` and push!
+3. Create your `profile.yaml` and push!
 
 ## 📝 Profile Configuration
 
@@ -81,6 +86,17 @@ Once set up, your profile will be available at:
 ```
 https://profiles.dev/YOUR_GITHUB_USERNAME
 ```
+
+## 🔒 Security & Requirements
+
+profiles.dev uses a self-service model where you control your own profile:
+
+- **Repository Name**: Must be exactly `profiles.dev`
+- **Updates**: Only via push to your default branch (no manual triggers)
+- **Authentication**: Uses GitHub OIDC tokens for secure updates
+- **Rate Limiting**: Maximum 1 update per minute
+
+These requirements ensure that only you can update your profile.
 
 ## 📋 Profile Schema
 
