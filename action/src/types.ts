@@ -45,8 +45,10 @@ export interface WebhookPayload {
 }
 
 export interface WebhookResponse {
-  success: boolean;
+  status?: string;      // 'accepted' for 202 responses
+  success?: boolean;    // legacy field
   profileId?: string;
   message: string;
   errors?: string[];
+  error?: string;       // for error responses
 }

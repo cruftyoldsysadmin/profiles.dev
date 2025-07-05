@@ -43,8 +43,10 @@ export interface WebhookPayload {
     commit_sha: string;
 }
 export interface WebhookResponse {
-    success: boolean;
+    status?: string;
+    success?: boolean;
     profileId?: string;
     message: string;
     errors?: string[];
+    error?: string;
 }

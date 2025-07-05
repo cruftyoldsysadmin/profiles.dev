@@ -34676,21 +34676,20 @@ async function run() {
                 },
                 timeout: 30000 // 30 second timeout
             });
-            const { data } = response;
-            if (data.success) {
-                core.info(`✅ Profile updated successfully!`);
-                if (data.profileId) {
-                    core.info(`📋 Profile ID: ${data.profileId}`);
-                    core.setOutput('profile-id', data.profileId);
-                }
+            const { data, status } = response;
+            // Handle 202 Accepted response
+            if (status === 202 || data.status === 'accepted') {
+                core.info(`✅ Profile update accepted!`);
+                core.info(`📋 Status: ${data.status}`);
+                core.info(`💬 Message: ${data.message}`);
                 core.setOutput('status', 'success');
                 core.setOutput('message', data.message);
                 // Set summary
                 await core.summary
                     .addHeading('profiles.dev Update Successful! 🎉')
-                    .addRaw(`Profile for **${owner}** has been updated.`)
+                    .addRaw(`Profile for **${owner}** has been queued for update.`)
                     .addBreak()
-                    .addRaw(`**Profile ID:** ${data.profileId || 'N/A'}`)
+                    .addRaw(`**Status:** ${data.status}`)
                     .addBreak()
                     .addRaw(`**Message:** ${data.message}`)
                     .addBreak()
@@ -34698,12 +34697,10 @@ async function run() {
                     .write();
             }
             else {
-                core.setFailed(`Profile update failed: ${data.message}`);
-                if (data.errors) {
-                    data.errors.forEach(error => core.error(error));
-                }
+                // This shouldn't happen with a 2xx response, but handle it just in case
+                core.setFailed(`Unexpected response: ${data.message || 'Unknown error'}`);
                 core.setOutput('status', 'failed');
-                core.setOutput('message', data.message);
+                core.setOutput('message', data.message || 'Unknown error');
             }
         }
         catch (error) {
