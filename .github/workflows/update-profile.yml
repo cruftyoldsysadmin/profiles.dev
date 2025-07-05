@@ -20,5 +20,5 @@ jobs:
       
       - name: Update profiles.dev
         uses: nomadops/profiles.dev@main
-        # Note: api-endpoint defaults to https://api.profiles.dev/api/webhook
-        # No need to override unless testing
+        with:
+          debug: true
