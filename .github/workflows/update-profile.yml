@@ -20,5 +20,5 @@ jobs:
       - name: Update profiles.dev
         uses: ./  # Will use nomadops/profiles.dev@v1 after testing
         with:
-          api-endpoint: 'https://httpbin.org/post'  # Using mock for testing
+          api-endpoint: 'https://3o4quj9fq4.execute-api.eu-west-1.amazonaws.com/Prod/api/webhook'
           debug: true
