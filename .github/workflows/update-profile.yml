@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Update profiles.dev
-        uses: ./  # Will use nomadops/profiles.dev@v1 after testing
+        uses: nomadops/profiles.dev@main
         with:
           api-endpoint: 'https://3o4quj9fq4.execute-api.eu-west-1.amazonaws.com/Prod/api/webhook'
           debug: true
