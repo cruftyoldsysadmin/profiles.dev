@@ -38,23 +38,17 @@ export interface ProfileData {
 }
 
 export interface WebhookPayload {
-  profile: ProfileData;
-  repository: {
-    owner: string;
-    name: string;
-    url: string;
-  };
-  commit: {
-    sha: string;
-    message: string;
-    author: string;
-  };
-  timestamp: string;
+  profile_content: string;  // base64 encoded YAML
+  repository: string;       // owner/repo format
+  ref: string;             // git ref
+  commit_sha: string;      // commit SHA
 }
 
 export interface WebhookResponse {
-  success: boolean;
+  status?: string;      // 'accepted' for 202 responses
+  success?: boolean;    // legacy field
   profileId?: string;
   message: string;
   errors?: string[];
+  error?: string;       // for error responses
 }

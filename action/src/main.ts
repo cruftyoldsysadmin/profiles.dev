@@ -102,20 +102,15 @@ async function run(): Promise<void> {
       core.debug('OIDC token obtained successfully');
     }
 
-    // Prepare webhook payload
-    const payload: WebhookPayload = {
-      profile: profileData,
-      repository: {
-        owner,
-        name: repo,
-        url: `https://github.com/${owner}/${repo}`
-      },
-      commit: {
-        sha: context.sha,
-        message: context.payload.head_commit?.message || 'Update profile',
-        author: context.actor
-      },
-      timestamp: new Date().toISOString()
+    // Prepare webhook payload matching API expectations
+    const profileYaml = fs.readFileSync(path.resolve(process.cwd(), profilePath), 'utf8');
+    const profileContentBase64 = Buffer.from(profileYaml).toString('base64');
+    
+    const payload = {
+      profile_content: profileContentBase64,
+      repository: `${owner}/${repo}`,
+      ref: context.ref,
+      commit_sha: context.sha
     };
 
     if (debug) {
@@ -138,35 +133,33 @@ async function run(): Promise<void> {
         timeout: 30000 // 30 second timeout
       });
 
-      const { data } = response;
+      const { data, status } = response;
 
-      if (data.success) {
-        core.info(`✅ Profile updated successfully!`);
-        if (data.profileId) {
-          core.info(`📋 Profile ID: ${data.profileId}`);
-          core.setOutput('profile-id', data.profileId);
-        }
+      // Handle 202 Accepted response
+      if (status === 202 || data.status === 'accepted') {
+        core.info(`✅ Profile update accepted!`);
+        core.info(`📋 Status: ${data.status}`);
+        core.info(`💬 Message: ${data.message}`);
+        
         core.setOutput('status', 'success');
         core.setOutput('message', data.message);
         
         // Set summary
         await core.summary
           .addHeading('profiles.dev Update Successful! 🎉')
-          .addRaw(`Profile for **${owner}** has been updated.`)
+          .addRaw(`Profile for **${owner}** has been queued for update.`)
           .addBreak()
-          .addRaw(`**Profile ID:** ${data.profileId || 'N/A'}`)
+          .addRaw(`**Status:** ${data.status}`)
           .addBreak()
           .addRaw(`**Message:** ${data.message}`)
           .addBreak()
           .addLink('View your profile', `https://profiles.dev/${owner}`)
           .write();
       } else {
-        core.setFailed(`Profile update failed: ${data.message}`);
-        if (data.errors) {
-          data.errors.forEach(error => core.error(error));
-        }
+        // This shouldn't happen with a 2xx response, but handle it just in case
+        core.setFailed(`Unexpected response: ${data.message || 'Unknown error'}`);
         core.setOutput('status', 'failed');
-        core.setOutput('message', data.message);
+        core.setOutput('message', data.message || 'Unknown error');
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {

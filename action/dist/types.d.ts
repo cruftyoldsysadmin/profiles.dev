@@ -37,22 +37,16 @@ export interface ProfileData {
     [key: string]: any;
 }
 export interface WebhookPayload {
-    profile: ProfileData;
-    repository: {
-        owner: string;
-        name: string;
-        url: string;
-    };
-    commit: {
-        sha: string;
-        message: string;
-        author: string;
-    };
-    timestamp: string;
+    profile_content: string;
+    repository: string;
+    ref: string;
+    commit_sha: string;
 }
 export interface WebhookResponse {
-    success: boolean;
+    status?: string;
+    success?: boolean;
     profileId?: string;
     message: string;
     errors?: string[];
+    error?: string;
 }
