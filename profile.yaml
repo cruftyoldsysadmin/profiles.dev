@@ -29,6 +29,7 @@ languages:
   - Python
   - Go
   - YAML (unfortunately)
+  - NodeJS
 
 # Projects
 projects:
