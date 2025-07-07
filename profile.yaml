@@ -7,6 +7,7 @@ location: "The Server Room (Temperature: Always Too Cold)"
 available_for:
   - consulting
   - mentoring
+  - collaboration
 email: crufty@oldsysadmin.com
 website: https://cruftyoldsysadmin.com
 
