@@ -67,12 +67,13 @@ education:
 
 # Certifications
 certifications:
+  - name: AWS Solutions Architect
+    issuer: Amazon
+    year: 2020
+    url: https://aws.amazon.com/certification/
+
   - name: Certified Kubernetes Administrator
     issuer: CNCF
     year: 2021
     url: https://cncf.io/certification/cka/
 
-  - name: AWS Solutions Architect
-    issuer: Amazon
-    year: 2020
-    url: https://aws.amazon.com/certification/
